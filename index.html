@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela de Marina Mercante ARD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"DM Serif Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#1e3a8a',
+                            900: '#0f172a', // Azul casi negro
+                            950: '#020617',
+                        },
+                        gold: {
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+         /* Ocultar barra de scroll para estética */
+         .scrollbar-hide::-webkit-scrollbar { display: none; }
+         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+         
+         .fade-in { animation: fadeIn 0.5s ease-in-out; }
+         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+<header class="bg-white shadow-md sticky top-0 z-40">
+    <div class="bg-navy-900 text-white text-xs py-2 hidden md:block">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex gap-4">
+                <span class="flex items-center gap-1"><ion-icon name="call"></ion-icon> (829) 760-8147</span>
+                <span class="flex items-center gap-1"><ion-icon name="mail"></ion-icon> emmd@academianaval.edu.do</span>
+            </div>
+            <div class="flex gap-4 uppercase tracking-widest font-bold text-[10px]">
+                <a href="#" class="hover:text-gold-500">Transparencia</a>
+                <a href="#" class="hover:text-gold-500">Intranet</a>
+                <a href="#" class="hover:text-gold-500">Mapa del Sitio</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center md:hidden">
+            <div class="flex items-center gap-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_the_Dominican_Republic.svg/1200px-Coat_of_arms_of_the_Dominican_Republic.svg.png" alt="Escudo RD" class="h-10 w-auto">
+                <div>
+                    <h1 class="font-serif text-navy-900 font-bold leading-none">Marina Mercante</h1>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-wide">República Dominicana</p>
+                </div>
+            </div>
+            <button id="mobile-menu-button" class="text-navy-900 text-3xl focus:outline-none">
+                <ion-icon name="menu-outline"></ion-icon>
+            </button>
+        </div>
+
+        <div class="hidden md:flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_the_Dominican_Republic.svg/1200px-Coat_of_arms_of_the_Dominican_Republic.svg.png" alt="Escudo RD" class="h-12 w-auto">
+                <div class="h-10 w-px bg-gray-300"></div> <div class="flex flex-col">
+                    <h1 class="text-2xl font-serif font-bold text-navy-900 tracking-tight">Escuela de Marina Mercante</h1>
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-[0.2em] text-justify">Armada República Dominicana</p>
+                </div>
+            </div>
+
+            <div class="flex items-center bg-gray-100 rounded-full px-4 py-2 border border-gray-200 focus-within:border-navy-900 focus-within:ring-1 focus-within:ring-navy-900 transition-all">
+                <ion-icon name="search-outline" class="text-gray-400 mr-2"></ion-icon>
+                <input type="text" placeholder="Buscar curso..." class="bg-transparent text-sm focus:outline-none text-navy-900 placeholder-gray-500 w-48">
+            </div>
+        </div>
+    </div>
+
+    <nav class="hidden md:block bg-navy-900 border-t-4 border-gold-500">
+        <div class="container mx-auto">
+            <ul class="flex justify-center">
+                <li><a href="#" class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Inicio</a></li>
+                <li class="group relative">
+                    <a href="#" class="flex items-center gap-1 text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">
+                        La Escuela <ion-icon name="chevron-down-outline" class="text-xs opacity-70"></ion-icon>
+                    </a>
+                </li>
+                <li><a href="#" class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Oferta Académica</a></li>
+                <li><a href="#" class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Gente de Mar</a></li>
+                <li><a href="#" class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Aula Virtual</a></li>
+                <li><a href="#" class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <nav id="mobile-menu" class="hidden md:hidden bg-navy-900 text-white border-t-4 border-gold-500 absolute w-full z-50 shadow-xl">
+        <ul class="flex flex-col py-4 px-6 space-y-4 font-semibold">
+            <li><a href="#" class="block hover:text-gold-500">Inicio</a></li>
+            <li><a href="#" class="block hover:text-gold-500">La Escuela</a></li>
+            <li><a href="#" class="block hover:text-gold-500">Cursos OMI</a></li>
+            <li><a href="#" class="block hover:text-gold-500">Aula Virtual</a></li>
+            <li><a href="#" class="block bg-gold-600 text-navy-900 text-center py-2 rounded font-bold">Inscripción</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="bg-navy-900 relative">
+    <div x-data="{ activeSlide: 0, slides: 3, timer: null }" 
+         x-init="timer = setInterval(() => activeSlide = (activeSlide + 1) % slides, 5000)"
+         class="w-full relative group h-[50vh] md:h-[70vh] lg:h-[85vh]">
+        
+        <div class="relative overflow-hidden w-full h-full">
+            <div class="flex transition-transform duration-700 ease-in-out h-full"
+                 :style="`transform: translateX(-${activeSlide * 100}%)`">
+                
+                <div class="min-w-full h-full relative">
+                    <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover brightness-50">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
+                        <span class="bg-gold-500 text-navy-900 text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest fade-in">Certificación Internacional</span>
+                        <h2 class="text-4xl md:text-6xl font-serif font-bold mb-4 drop-shadow-lg fade-in">Excelencia en Formación Marítima</h2>
+                        <p class="text-lg md:text-xl max-w-2xl text-gray-200 fade-in">Cumpliendo con los estándares de la Organización Marítima Internacional (OMI) y normas ISO 9001.</p>
+                    </div>
+                </div>
+
+                <div class="min-w-full h-full relative">
+                    <img src="https://images.unsplash.com/photo-1500930263629-9ee4f2f45cc1?q=80&w=2072&auto=format&fit=crop" class="w-full h-full object-cover brightness-50">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
+                        <h2 class="text-4xl md:text-6xl font-serif font-bold mb-4 drop-shadow-lg">Capacitación de Vanguardia</h2>
+                        <p class="text-lg md:text-xl max-w-2xl text-gray-200">Modernos simuladores y prácticas en alta mar para garantizar la competencia profesional.</p>
+                    </div>
+                </div>
+
+                <div class="min-w-full h-full relative">
+                    <img src="https://plus.unsplash.com/premium_photo-1661917547072-0051187d77b8?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover brightness-50">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
+                        <h2 class="text-4xl md:text-6xl font-serif font-bold mb-4 drop-shadow-lg">Gente de Mar</h2>
+                        <p class="text-lg md:text-xl max-w-2xl text-gray-200">Gestionamos titulaciones y certificaciones para el desarrollo de la carrera mercante.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button @click="activeSlide = (activeSlide - 1 + slides) % slides; clearInterval(timer)" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/10 hover:bg-white/30 backdrop-blur-md rounded-full p-3 text-white transition-all border border-white/20"><ion-icon name="chevron-back" size="large"></ion-icon></button>
+        <button @click="activeSlide = (activeSlide + 1) % slides; clearInterval(timer)" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/10 hover:bg-white/30 backdrop-blur-md rounded-full p-3 text-white transition-all border border-white/20"><ion-icon name="chevron-forward" size="large"></ion-icon></button>
+    </div>
+</section>
+
+<section class="relative -mt-20 z-20 px-4 mb-20">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-white rounded-xl shadow-xl p-8 border-t-4 border-gold-500 transform hover:-translate-y-2 transition-transform duration-300">
+            <div class="w-14 h-14 bg-navy-50 rounded-lg flex items-center justify-center mb-6 text-navy-900">
+                <ion-icon name="boat-outline" class="text-3xl"></ion-icon>
+            </div>
+            <h3 class="text-2xl font-serif font-bold text-navy-900 mb-3">Cursos Básicos OMI</h3>
+            <p class="text-gray-500 mb-6 line-clamp-3">Formación esencial en seguridad, supervivencia y primeros auxilios requerida por el convenio STCW para todo personal embarcado.</p>
+            <a href="#" class="inline-flex items-center text-gold-600 font-bold hover:text-navy-900 transition-colors">Ver requisitos <ion-icon name="arrow-forward" class="ml-2"></ion-icon></a>
+        </div>
+
+        <div class="bg-navy-900 rounded-xl shadow-xl p-8 border-t-4 border-gold-500 transform md:-translate-y-4 hover:-translate-y-6 transition-transform duration-300 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4 opacity-10">
+                <ion-icon name="medal-outline" class="text-9xl"></ion-icon>
+            </div>
+            <div class="w-14 h-14 bg-white/10 rounded-lg flex items-center justify-center mb-6 text-gold-500 relative z-10">
+                <ion-icon name="school-outline" class="text-3xl"></ion-icon>
+            </div>
+            <h3 class="text-2xl font-serif font-bold text-white mb-3 relative z-10">Oficiales Mercantes</h3>
+            <p class="text-gray-300 mb-6 line-clamp-3 relative z-10">Programas avanzados para formación de Oficiales de Cubierta y Máquinas. Liderazgo, navegación astronómica y gestión.</p>
+            <a href="#" class="inline-flex items-center text-white font-bold bg-gold-600 hover:bg-gold-500 px-4 py-2 rounded-lg transition-colors relative z-10">Aplicar ahora</a>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-xl p-8 border-t-4 border-gold-500 transform hover:-translate-y-2 transition-transform duration-300">
+            <div class="w-14 h-14 bg-navy-50 rounded-lg flex items-center justify-center mb-6 text-navy-900">
+                <ion-icon name="documents-outline" class="text-3xl"></ion-icon>
+            </div>
+            <h3 class="text-2xl font-serif font-bold text-navy-900 mb-3">Certificaciones</h3>
+            <p class="text-gray-500 mb-6 line-clamp-3">Gestión de trámites para libretas de embarque, renovaciones y validación de títulos ante la Dirección de Gente de Mar.</p>
+            <a href="#" class="inline-flex items-center text-gold-600 font-bold hover:text-navy-900 transition-colors">Iniciar trámite <ion-icon name="arrow-forward" class="ml-2"></ion-icon></a>
+        </div>
+
+    </div>
+</section>
+
+<section class="py-16 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center mb-24">
+            <div class="relative mb-10 lg:mb-0">
+                <div class="absolute -inset-4 bg-gold-500/20 rounded-xl transform -rotate-3"></div>
+                <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2070&auto=format&fit=crop" class="relative rounded-xl shadow-2xl w-full object-cover h-[400px]" alt="Simulador">
+            </div>
+            <div>
+                <span class="text-gold-600 font-bold tracking-widest uppercase text-sm">Tecnología Educativa</span>
+                <h2 class="text-4xl font-serif font-bold text-navy-900 mt-2 mb-6">Entrenamiento con Simuladores</h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    La EMMD cuenta con tecnología de punta para la simulación de maniobras de buques, comunicaciones GMDSS y operaciones de radar (ARPA), permitiendo a los cadetes experimentar situaciones reales en un entorno controlado.
+                </p>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center gap-3 text-gray-700"><ion-icon name="checkmark-circle" class="text-gold-600 text-xl"></ion-icon> Puente de navegación Full Mission</li>
+                    <li class="flex items-center gap-3 text-gray-700"><ion-icon name="checkmark-circle" class="text-gold-600 text-xl"></ion-icon> Simulador de Sala de Máquinas</li>
+                    <li class="flex items-center gap-3 text-gray-700"><ion-icon name="checkmark-circle" class="text-gold-600 text-xl"></ion-icon> Cartas Electrónicas (ECDIS)</li>
+                </ul>
+                <a href="#" class="text-navy-900 font-bold border-b-2 border-gold-500 pb-1 hover:text-gold-600 transition-colors">Conocer instalaciones</a>
+            </div>
+        </div>
+
+        <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+            <div class="order-2 lg:order-1">
+                <span class="text-gold-600 font-bold tracking-widest uppercase text-sm">Responsabilidad Social</span>
+                <h2 class="text-4xl font-serif font-bold text-navy-900 mt-2 mb-6">Protección del Medio Marino</h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    Fomentamos una cultura de respeto y cuidado por nuestros océanos. Nuestros programas incluyen módulos intensivos sobre el convenio MARPOL y gestión ambiental a bordo.
+                </p>
+                <a href="#" class="inline-flex rounded-lg bg-navy-900 px-6 py-3 text-base font-semibold text-white shadow-lg hover:bg-navy-800 transition-all">
+                    Ver proyectos ambientales
+                </a>
+            </div>
+            <div class="relative order-1 lg:order-2 mb-10 lg:mb-0">
+                <div class="absolute -inset-4 bg-navy-900/10 rounded-xl transform rotate-3"></div>
+                <img src="https://images.unsplash.com/photo-1468581264429-2548ef9eb732?q=80&w=2070&auto=format&fit=crop" class="relative rounded-xl shadow-2xl w-full object-cover h-[400px]" alt="Mar Limpio">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 bg-gray-100">
+    <div class="max-w-7xl mx-auto relative px-4" id="carousel-container">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-serif font-bold text-navy-900">Programas de <span class="text-gold-600 italic">Formación</span></h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Capacitación especializada para cada rol a bordo, certificada internacionalmente.</p>
+        </div>
+
+        <div class="overflow-hidden py-4"> 
+            <div id="track" class="flex transition-transform duration-500 ease-out">
+                
+                <div class="min-w-full md:min-w-[33.33%] p-4">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 text-center h-full border-b-4 border-navy-900 hover:border-gold-500 transition-all group cursor-pointer hover:-translate-y-2">
+                        <div class="bg-blue-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 group-hover:bg-navy-900 transition-colors duration-300">
+                            <ion-icon name="compass-outline" class="text-4xl text-navy-900 group-hover:text-white transition-colors"></ion-icon>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Navegación</h3>
+                        <p class="text-gray-500 text-sm">Oficial de guardia, derrota, meteorología y maniobra de buques.</p>
+                    </div>
+                </div>
+
+                <div class="min-w-full md:min-w-[33.33%] p-4">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 text-center h-full border-b-4 border-navy-900 hover:border-gold-500 transition-all group cursor-pointer hover:-translate-y-2">
+                        <div class="bg-orange-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 group-hover:bg-navy-900 transition-colors duration-300">
+                            <ion-icon name="cog-outline" class="text-4xl text-orange-600 group-hover:text-white transition-colors"></ion-icon>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Ingeniería</h3>
+                        <p class="text-gray-500 text-sm">Operación y mantenimiento de plantas propulsoras y sistemas auxiliares.</p>
+                    </div>
+                </div>
+
+                <div class="min-w-full md:min-w-[33.33%] p-4">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 text-center h-full border-b-4 border-navy-900 hover:border-gold-500 transition-all group cursor-pointer hover:-translate-y-2">
+                        <div class="bg-red-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 group-hover:bg-navy-900 transition-colors duration-300">
+                            <ion-icon name="flame-outline" class="text-4xl text-red-600 group-hover:text-white transition-colors"></ion-icon>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Seguridad (STCW)</h3>
+                        <p class="text-gray-500 text-sm">Lucha contra incendios, primeros auxilios y supervivencia en la mar.</p>
+                    </div>
+                </div>
+
+                <div class="min-w-full md:min-w-[33.33%] p-4">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 text-center h-full border-b-4 border-navy-900 hover:border-gold-500 transition-all group cursor-pointer hover:-translate-y-2">
+                        <div class="bg-teal-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 group-hover:bg-navy-900 transition-colors duration-300">
+                            <ion-icon name="wifi-outline" class="text-4xl text-teal-600 group-hover:text-white transition-colors"></ion-icon>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Comunicaciones</h3>
+                        <p class="text-gray-500 text-sm">Operador General del Sistema Mundial de Socorro (GMDSS).</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <button id="prevBtn" class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-2 md:-translate-x-6 bg-white p-3 rounded-full shadow-lg text-navy-900 hover:bg-gold-500 hover:text-white focus:outline-none z-10 transition">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+        </button>
+        <button id="nextBtn" class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-2 md:translate-x-6 bg-white p-3 rounded-full shadow-lg text-navy-900 hover:bg-gold-500 hover:text-white focus:outline-none z-10 transition">
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
+        
+        <div class="flex justify-center mt-6 space-x-2" id="indicators"></div>
+    </div>
+</section>
+
+<section class="py-20 max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy-50 text-navy-900 text-xs font-bold uppercase tracking-wide">
+            Actualidad Institucional
+        </span>
+        <h2 class="text-4xl md:text-5xl font-serif text-navy-900 mt-4">Noticias y <span class="text-gold-600 italic">Eventos</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-7 group cursor-pointer">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden h-full flex flex-col border border-gray-100">
+                <div class="relative overflow-hidden h-64 md:h-96 w-full">
+                    <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" 
+                         src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" 
+                         alt="Reunión Navieras">
+                    <div class="absolute top-4 left-4 bg-navy-900/90 backdrop-blur-sm px-4 py-1 rounded-lg text-xs font-bold text-white shadow-sm uppercase">
+                        Cooperación
+                    </div>
+                </div>
+                <div class="p-8 md:p-10 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-4 text-sm text-gray-500 mb-4 font-semibold">
+                            <span class="flex items-center gap-1"><ion-icon name="calendar-outline"></ion-icon> 10 Oct, 2025</span>
+                            <span class="flex items-center gap-1"><ion-icon name="person-outline"></ion-icon> Dir. EMMD</span>
+                        </div>
+                        <h3 class="text-3xl font-serif font-bold text-navy-900 mb-4 leading-tight group-hover:text-gold-600 transition-colors">
+                            Fortalecen vínculos con representantes de Navieras Nacionales
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            La Escuela de Marina Mercante sostuvo una importante reunión de trabajo con representantes de Rannik, P&O y Boluda para alinear la oferta académica a las necesidades del sector.
+                        </p>
+                    </div>
+                    <div class="flex items-center text-navy-900 font-bold group-hover:translate-x-2 transition-transform duration-300">
+                        Leer nota completa <ion-icon name="arrow-forward-outline" class="ml-2"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-5 flex flex-col gap-6 justify-center">
+            
+            <article class="bg-white p-5 rounded-2xl shadow-md hover:shadow-lg transition-all border-l-4 border-gold-500 flex gap-5 items-start">
+                <div class="flex-shrink-0 w-16 h-16 bg-navy-50 rounded-xl flex flex-col items-center justify-center text-navy-900 font-bold">
+                    <span class="text-2xl font-serif">06</span>
+                    <span class="text-[10px] uppercase">Nov</span>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-navy-900 font-serif mb-2 hover:text-gold-600 transition-colors cursor-pointer">
+                        180 Aniversario de la Constitución
+                    </h4>
+                    <p class="text-sm text-gray-500 line-clamp-2">Conmemoración de la promulgación de la primera Carta Magna dominicana.</p>
+                </div>
+            </article>
+
+            <article class="bg-white p-5 rounded-2xl shadow-md hover:shadow-lg transition-all border-l-4 border-gold-500 flex gap-5 items-start">
+                <div class="flex-shrink-0 w-16 h-16 bg-navy-50 rounded-xl flex flex-col items-center justify-center text-navy-900 font-bold">
+                    <span class="text-2xl font-serif">ISO</span>
+                    <span class="text-[10px] uppercase">9001</span>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-navy-900 font-serif mb-2 hover:text-gold-600 transition-colors cursor-pointer">
+                        Certificación de Calidad
+                    </h4>
+                    <p class="text-sm text-gray-500 line-clamp-2">Mantenimiento de los estándares ISO 21001:2018 para organizaciones educativas.</p>
+                </div>
+            </article>
+
+            <article class="bg-white p-5 rounded-2xl shadow-md hover:shadow-lg transition-all border-l-4 border-gold-500 flex gap-5 items-start">
+                <div class="flex-shrink-0 w-16 h-16 bg-navy-50 rounded-xl flex flex-col items-center justify-center text-navy-900 font-bold">
+                    <span class="text-2xl font-serif">31</span>
+                    <span class="text-[10px] uppercase">Ene</span>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-navy-900 font-serif mb-2 hover:text-gold-600 transition-colors cursor-pointer">
+                        Inicio Cursos Modelo OMI
+                    </h4>
+                    <p class="text-sm text-gray-500 line-clamp-2">Capacitación para Instructores Marítimos y Evaluadores de la Dirección de Gente de Mar.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="bg-navy-900 py-20 text-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-serif font-bold text-center mb-12">Vida en la <span class="text-gold-500 italic">Escuela</span></h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 h-auto md:h-[600px]">
+            <div class="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl group cursor-pointer h-64 md:h-full">
+                <img src="https://images.unsplash.com/photo-1542369796-03f421f5749f?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 to-transparent flex flex-col justify-end p-8 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
+                    <h3 class="text-2xl font-bold text-gold-500">Prácticas a Bordo</h3>
+                    <p class="text-sm text-gray-300">Entrenamiento real en buques escuela.</p>
+                </div>
+            </div>
+
+            <div class="relative overflow-hidden rounded-2xl group cursor-pointer h-48 md:h-auto">
+                <img src="https://images.unsplash.com/photo-1516571556816-7248f2178358?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="font-bold border border-white px-4 py-1 rounded-full text-sm">Aula Virtual</span>
+                </div>
+            </div>
+
+            <div class="relative overflow-hidden rounded-2xl group cursor-pointer h-48 md:h-auto">
+                <img src="https://images.unsplash.com/photo-1566373738018-80e227a810d7?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="font-bold border border-white px-4 py-1 rounded-full text-sm">Graduaciones</span>
+                </div>
+            </div>
+
+            <div class="relative overflow-hidden rounded-2xl group cursor-pointer h-48 md:h-auto">
+                <img src="https://images.unsplash.com/photo-1594917639537-88942b0058b8?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="font-bold border border-white px-4 py-1 rounded-full text-sm">Simuladores</span>
+                </div>
+            </div>
+            
+            <div class="relative overflow-hidden rounded-2xl group cursor-pointer h-48 md:h-auto">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="font-bold border border-white px-4 py-1 rounded-full text-sm">Planificación</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <section class="py-20 px-4 md:px-8 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="text-gold-600 font-bold tracking-wider uppercase text-sm">Gestión Académica</span>
+            <h2 class="text-4xl md:text-5xl font-serif text-navy-900 mt-2 mb-4">Pagos de <span class="text-navy-800 italic">Servicios</span></h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">Plataforma segura para el pago de matrículas, solicitud de certificaciones y cursos especiales.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-7 bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-navy-900 to-gold-500"></div>
+                
+                <h3 class="text-2xl font-serif text-gray-800 mb-6">Monto a Pagar (DOP)</h3>
+                
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                    <button onclick="selectAmount(this, 1000)" class="payment-btn py-4 rounded-xl border-2 border-gray-200 text-gray-600 font-bold text-lg hover:border-navy-900 hover:text-navy-900 transition-all focus:outline-none bg-white">
+                        $1,000
+                    </button>
+                    <button onclick="selectAmount(this, 2500)" class="payment-btn py-4 rounded-xl border-2 border-navy-900 bg-navy-900 text-white font-bold text-lg transition-all focus:outline-none shadow-lg transform scale-105 ring-2 ring-blue-300">
+                        $2,500
+                    </button>
+                    <button onclick="selectAmount(this, 5000)" class="payment-btn py-4 rounded-xl border-2 border-gray-200 text-gray-600 font-bold text-lg hover:border-navy-900 hover:text-navy-900 transition-all focus:outline-none bg-white">
+                        $5,000
+                    </button>
+                </div>
+
+                <div class="mb-8">
+                    <label class="block text-sm font-semibold text-gray-500 mb-2">Otro monto (Especificar)</label>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <span class="text-gray-400 text-lg font-bold group-focus-within:text-navy-900">$</span>
+                        </div>
+                        <input type="number" id="custom-amount" placeholder="0.00" onfocus="clearButtons()"
+                            class="w-full pl-10 pr-4 py-4 rounded-xl bg-gray-50 border-2 border-gray-200 text-gray-800 font-bold text-lg focus:outline-none focus:border-navy-900 focus:bg-white focus:ring-4 focus:ring-navy-900/10 transition-all">
+                    </div>
+                </div>
+
+                <button class="w-full bg-navy-900 hover:bg-navy-800 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 text-lg">
+                    <span>Procesar Pago</span>
+                    <ion-icon name="card-outline"></ion-icon>
+                </button>
+                
+                <p class="text-xs text-center text-gray-400 mt-4 flex items-center justify-center gap-1">
+                    <ion-icon name="lock-closed-outline"></ion-icon> Pagos procesados vía Carnet / Azul
+                </p>
+            </div>
+
+            <div class="lg:col-span-5 space-y-6">
+                <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 relative group">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-navy-50 rounded-full flex items-center justify-center text-navy-900">
+                            <ion-icon name="business-outline" class="text-xl"></ion-icon>
+                        </div>
+                        <h4 class="font-bold text-gray-800">Transferencia Bancaria</h4>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 space-y-3">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Banco</p>
+                            <p class="text-gray-800 font-medium">Banreservas</p>
+                        </div>
+                        <div class="relative">
+                            <p class="text-xs text-gray-500 uppercase font-bold">No. de Cuenta</p>
+                            <div class="flex items-center justify-between">
+                                <p class="text-gray-800 font-mono text-lg font-bold tracking-wide" id="bank-account">240-000000-1</p>
+                                <button onclick="copyToClipboard('bank-account')" class="text-navy-900 hover:text-blue-700 text-sm font-semibold flex items-center gap-1 bg-white px-2 py-1 rounded shadow-sm hover:shadow">
+                                    <ion-icon name="copy-outline"></ion-icon> Copiar
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Beneficiario</p>
+                            <p class="text-gray-800 font-medium">Escuela Marina Mercante ARD</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<section class="py-20 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto shadow-2xl rounded-3xl overflow-hidden bg-white flex flex-col lg:flex-row">
+        
+        <div class="lg:w-5/12 bg-navy-900 text-white p-10 md:p-14 relative overflow-hidden flex flex-col justify-between">
+            <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
+            <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-gold-600 rounded-full mix-blend-screen filter blur-3xl opacity-20"></div>
+
+            <div class="relative z-10">
+                <h3 class="text-3xl md:text-4xl font-serif mb-6">Admisiones</h3>
+                <p class="text-blue-100 text-lg mb-10 font-light leading-relaxed">
+                    Solicita información sobre convocatorias, requisitos de ingreso o validación de títulos.
+                </p>
+
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4 group">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-gold-500 transition-colors duration-300 flex-shrink-0">
+                            <ion-icon name="location-outline" class="text-xl"></ion-icon>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gold-400 font-semibold uppercase tracking-wider">Dirección</p>
+                            <p class="text-lg leading-tight">Base Naval 27 de Febrero,<br>Av. España, Punta Torrecilla</p>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+
+        <div class="lg:w-7/12 p-10 md:p-14 bg-white relative">
+            <h2 class="text-4xl md:text-5xl font-serif text-navy-900 mb-2">Solicitar <span class="text-gold-600 italic">Información</span></h2>
+            <p class="text-gray-500 mb-8">Completa el formulario y un oficial de admisiones te contactará.</p>
+
+            <form action="#" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-gray-600">Nombre</label>
+                        <input type="text" placeholder="Tu Nombre" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-navy-900 focus:bg-white focus:ring-4 focus:ring-navy-900/10 transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-gray-600">Teléfono</label>
+                        <input type="tel" placeholder="(809) 000-0000" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-navy-900 focus:bg-white focus:ring-4 focus:ring-navy-900/10 transition-all">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold text-gray-600">Interés</label>
+                    <div class="relative">
+                        <select class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 focus:border-navy-900 focus:ring-4 focus:ring-navy-900/10 appearance-none">
+                            <option disabled selected>Selecciona un programa...</option>
+                            <option>Cursos Básicos OMI</option>
+                            <option>Oficial de Cubierta</option>
+                            <option>Oficial de Máquinas</option>
+                            <option>Renovación de Licencia</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-500">
+                            <ion-icon name="chevron-down-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="w-full md:w-auto bg-navy-900 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:bg-navy-800 transition-all flex items-center justify-center gap-2">
+                    Enviar Solicitud <ion-icon name="send-outline"></ion-icon>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white py-12 border-t border-gray-100">
+    <div class="container mx-auto px-4">
+        <h3 class="text-center font-serif text-2xl text-navy-900 mb-8 font-bold">Enlaces Relacionados</h3>
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+            <div class="flex flex-col items-center gap-2 group hover:scale-105 transition-transform">
+                <div class="h-20 w-20 bg-gray-100 rounded-full flex items-center justify-center text-4xl group-hover:bg-navy-50 group-hover:text-navy-900">⚓</div>
+                <span class="text-xs font-bold uppercase">Armada RD</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group hover:scale-105 transition-transform">
+                <div class="h-20 w-20 bg-gray-100 rounded-full flex items-center justify-center text-4xl group-hover:bg-navy-50 group-hover:text-navy-900">🛳️</div>
+                <span class="text-xs font-bold uppercase">OMI</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group hover:scale-105 transition-transform">
+                <div class="h-20 w-20 bg-gray-100 rounded-full flex items-center justify-center text-4xl group-hover:bg-navy-50 group-hover:text-navy-900">🇩🇴</div>
+                <span class="text-xs font-bold uppercase">Presidencia</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-navy-950 text-white pt-16 pb-8 border-t border-navy-900">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-3 mb-6">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_the_Dominican_Republic.svg/1200px-Coat_of_arms_of_the_Dominican_Republic.svg.png" class="h-16 brightness-0 invert opacity-80">
+                <div>
+                    <h4 class="font-serif text-xl font-bold text-gold-500">EMMD</h4>
+                    <p class="text-xs text-gray-400 uppercase tracking-wider">Escuela de Marina Mercante Dominicana</p>
+                </div>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed max-w-md">
+                Centro modelo de formación náutica fundamentado en los estándares de la OMI. Certificados bajo la norma ISO 9001:2015 e ISO 21001:2018.
+            </p>
+        </div>
+        
+        <div>
+            <h5 class="font-bold text-gold-500 mb-4 uppercase text-sm tracking-wider">Accesos Rápidos</h5>
+            <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:text-white transition-colors">Aula Virtual</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Solicitud de Récord</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Verificación de Títulos</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Calendario Académico</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h5 class="font-bold text-gold-500 mb-4 uppercase text-sm tracking-wider">Contacto</h5>
+            <ul class="space-y-3 text-sm text-gray-400">
+                <li class="flex items-start gap-2"><ion-icon name="location" class="mt-1 text-gold-600"></ion-icon> Base Naval 27 de Febrero, Villa Duarte, SDE.</li>
+                <li class="flex items-center gap-2"><ion-icon name="call" class="text-gold-600"></ion-icon> (829) 760-8147</li>
+                <li class="flex items-center gap-2"><ion-icon name="mail" class="text-gold-600"></ion-icon> emmd@academianaval.edu.do</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container mx-auto px-4 border-t border-navy-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+        <p>&copy; 2025 Escuela de Marina Mercante ARD. Todos los derechos reservados.</p>
+        <div class="flex gap-4 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white">Política de Privacidad</a>
+            <a href="#" class="hover:text-white">Términos de Uso</a>
+        </div>
+    </div>
+</footer>
+
+<div class="fixed top-1/2 right-0 -translate-y-1/2 z-50 flex flex-col gap-2 items-end">
+    <a href="#" class="group flex items-center justify-end w-12 h-12 bg-navy-900 text-white rounded-l-lg hover:bg-pink-600 hover:w-36 transition-all duration-300 shadow-lg overflow-hidden relative">
+        <span class="absolute left-4 opacity-0 group-hover:opacity-100 transition-opacity font-bold whitespace-nowrap text-xs">Instagram</span>
+        <div class="w-12 h-12 flex items-center justify-center absolute right-0 min-w-[3rem]">
+            <ion-icon name="logo-instagram" class="text-xl"></ion-icon>
+        </div>
+    </a>
+    <a href="#" class="group flex items-center justify-end w-12 h-12 bg-navy-900 text-white rounded-l-lg hover:bg-gold-600 hover:w-36 transition-all duration-300 shadow-lg overflow-hidden relative">
+        <span class="absolute left-4 opacity-0 group-hover:opacity-100 transition-opacity font-bold whitespace-nowrap text-xs">Llamar Ahora</span>
+        <div class="w-12 h-12 flex items-center justify-center absolute right-0 min-w-[3rem]">
+            <ion-icon name="call" class="text-xl"></ion-icon>
+        </div>
+    </a>
+</div>
+
+<script>
+    // Toggle Menú Móvil
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+
+    // Lógica del Carrusel de Servicios (Vanilla JS)
+    document.addEventListener('DOMContentLoaded', () => {
+        const track = document.getElementById('track');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const dotsContainer = document.getElementById('indicators');
+        let index = 0;
+        const items = track.children;
+        const itemsPerView = window.innerWidth >= 768 ? 3 : 1;
+        const maxIndex = items.length - itemsPerView;
+
+        // Crear Puntos
+        for (let i = 0; i <= maxIndex; i++) {
+            const dot = document.createElement('button');
+            dot.className = `h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-navy-900 w-6' : 'bg-gray-300 w-2'}`;
+            dot.addEventListener('click', () => { index = i; updateCarousel(); });
+            dotsContainer.appendChild(dot);
+        }
+        const dots = dotsContainer.children;
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${(index * 100) / itemsPerView}%)`;
+            Array.from(dots).forEach((dot, i) => {
+                dot.className = `h-2 rounded-full transition-all duration-300 ${i === index ? 'bg-navy-900 w-6' : 'bg-gray-300 w-2'}`;
+            });
+        }
+
+        nextBtn.addEventListener('click', () => { index = index < maxIndex ? index + 1 : 0; updateCarousel(); });
+        prevBtn.addEventListener('click', () => { index = index > 0 ? index - 1 : maxIndex; updateCarousel(); });
+    });
+
+    // Lógica de Selección de Pagos
+    function selectAmount(btn, amount) {
+        document.querySelectorAll('.payment-btn').forEach(b => {
+            b.classList.remove('bg-navy-900', 'text-white', 'border-navy-900', 'shadow-lg', 'scale-105', 'ring-2');
+            b.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+        });
+        btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+        btn.classList.add('bg-navy-900', 'text-white', 'border-navy-900', 'shadow-lg', 'scale-105', 'ring-2');
+        document.getElementById('custom-amount').value = '';
+    }
+
+    function clearButtons() {
+        document.querySelectorAll('.payment-btn').forEach(b => {
+            b.classList.remove('bg-navy-900', 'text-white', 'border-navy-900', 'shadow-lg', 'scale-105', 'ring-2');
+            b.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+        });
+    }
+
+    function copyToClipboard(elementId) {
+        const text = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(text).then(() => { alert('¡Cuenta copiada!'); });
+    }
+</script>
+
+</body>
+</html>
