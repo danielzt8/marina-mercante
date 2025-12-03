@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias y Artículos - Escuela de Marina Mercante ARD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"DM Serif Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#1e3a8a',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        gold: {
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+         .scrollbar-hide::-webkit-scrollbar { display: none; }
+         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+
+<header class="bg-white shadow-md sticky top-0 z-40">
+    <div class="bg-navy-900 text-white text-xs py-2 hidden md:block">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex gap-4">
+                <span class="flex items-center gap-1"><ion-icon name="call"></ion-icon> (829) 760-8147</span>
+                <span class="flex items-center gap-1"><ion-icon name="mail"></ion-icon> emmd@academianaval.edu.do</span>
+            </div>
+            <div class="flex gap-4 uppercase tracking-widest font-bold text-[10px]">
+                <a href="#" class="hover:text-gold-500">Intranet</a>
+                <a href="#" class="hover:text-gold-500">Mapa del Sitio</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center md:hidden">
+            <div class="flex items-center gap-2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRONWEaZA2qKrYswWs_cfF5NftEEFl_UUHRcg&s" alt="Escudo RD" class="h-10 w-auto">
+                <div>
+                    <h1 class="font-serif text-navy-900 font-bold leading-none">Escuela de Marina Mercante Dominicana</h1>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-wide">República Dominicana</p>
+                </div>
+            </div>
+            <button id="mobile-menu-button" class="text-navy-900 text-3xl focus:outline-none">
+                <ion-icon name="menu-outline"></ion-icon>
+            </button>
+        </div>
+
+        <div class="hidden md:flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRONWEaZA2qKrYswWs_cfF5NftEEFl_UUHRcg&s" alt="Escudo RD" class="h-12 w-auto">
+                <div class="h-10 w-px bg-gray-300"></div> <div class="flex flex-col">
+                    <h1 class="text-3xl font-serif font-bold text-navy-900 tracking-tight">Escuela de Marina Mercante Dominicana</h1>
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-[0.2em] text-justify">Armada República Dominicana</p>
+                </div>
+            </div>
+
+            <div class="flex items-center bg-gray-100 rounded-full px-4 py-2 border border-gray-200 focus-within:border-navy-900 focus-within:ring-1 focus-within:ring-navy-900 transition-all">
+                <ion-icon name="search-outline" class="text-gray-400 mr-2"></ion-icon>
+                <input type="text" placeholder="Buscar curso..." class="bg-transparent text-sm focus:outline-none text-navy-900 placeholder-gray-500 w-48">
+            </div>
+        </div>
+    </div>
+
+    <nav class="hidden md:block bg-navy-900 border-t-4 border-gold-500">
+        <div class="container mx-auto">
+            <ul class="flex justify-center">
+                <li><a href="index.html" class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Inicio</a></li>
+                <li class="group relative">
+                    <a href="#" class="flex items-center gap-1 text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">
+                        La escuela <ion-icon name="chevron-down-outline" class="text-xs opacity-70"></ion-icon>
+                    </a>
+                </li>
+                <li><a href="#" class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Oferta Académica</a></li>
+                <li><a href="#" class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-gold-500">Noticias</a></li>
+                <li><a href="#" class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <nav id="mobile-menu" class="hidden md:hidden bg-navy-900 text-white border-t-4 border-gold-500 absolute w-full z-50 shadow-xl">
+        <ul class="flex flex-col py-4 px-6 space-y-4 font-semibold">
+            <li><a href="index.html" class="block hover:text-gold-500">Inicio</a></li>
+            <li><a href="#" class="block hover:text-gold-500">La Escuela</a></li>
+            <li><a href="#" class="block hover:text-gold-500 text-gold-500">Noticias</a></li>
+            <li><a href="#" class="block bg-gold-600 text-navy-900 text-center py-2 rounded font-bold">Inscripción</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="flex-grow">
+    
+    <div class="bg-navy-900 py-16 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20 z-0"></div>
+        <div class="absolute -right-20 -top-20 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <span class="bg-gold-500 text-navy-900 text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block uppercase tracking-widest">Blog Institucional</span>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4">Noticias y <span class="italic text-gold-500">Actualidad</span></h1>
+            <p class="text-gray-300 max-w-2xl mx-auto text-lg">Mantente informado sobre las actividades, logros académicos y novedades del sector marítimo dominicano.</p>
+        </div>
+    </div>
+
+    <section class="py-16 container mx-auto px-4">
+        
+        <div class="mb-16">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden grid md:grid-cols-2 border border-gray-100 group cursor-pointer hover:shadow-2xl transition-all">
+                <div class="relative h-64 md:h-auto overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" 
+                         alt="Destacado" 
+                         class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-4 left-4 bg-gold-500 text-navy-900 px-3 py-1 rounded-lg text-xs font-bold uppercase shadow-sm">
+                        Destacado
+                    </div>
+                </div>
+                <div class="p-8 md:p-12 flex flex-col justify-center">
+                    <div class="flex items-center gap-4 text-sm text-gray-500 mb-4 font-semibold">
+                        <span class="flex items-center gap-1"><ion-icon name="calendar-outline"></ion-icon> 10 Oct, 2025</span>
+                        <span class="text-gold-600">Cooperación</span>
+                    </div>
+                    <h2 class="text-3xl font-serif font-bold text-navy-900 mb-4 group-hover:text-gold-600 transition-colors">
+                        Fortalecen vínculos con representantes de Navieras Nacionales
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        La Escuela de Marina Mercante sostuvo una importante reunión de trabajo con representantes de Rannik, P&O y Boluda para alinear la oferta académica a las necesidades del sector.
+                    </p>
+                    <a href="#" class="inline-flex items-center text-navy-900 font-bold hover:text-gold-600 transition-colors">
+                        Leer artículo completo <ion-icon name="arrow-forward" class="ml-2"></ion-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="px-6 py-2 rounded-full bg-navy-900 text-white font-semibold shadow-lg">Todos</button>
+            <button class="px-6 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-gold-500 hover:text-gold-600 font-semibold transition-all">Académicos</button>
+            <button class="px-6 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-gold-500 hover:text-gold-600 font-semibold transition-all">Eventos</button>
+            <button class="px-6 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-gold-500 hover:text-gold-600 font-semibold transition-all">Institucional</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <article class="bg-white rounded-2xl shadow-lg overflow-hidden border-b-4 border-transparent hover:border-gold-500 transition-all group hover:-translate-y-2">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1596423736502-127926884a4d?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Graduación">
+                    <div class="absolute bottom-0 left-0 bg-navy-900/90 text-white text-xs px-3 py-1 rounded-tr-lg">
+                        Eventos
+                    </div>
+                </div>
+                <div class="p-6">
+                    <span class="text-xs font-bold text-gray-400 mb-2 block">15 Nov, 2025</span>
+                    <h3 class="text-xl font-serif font-bold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors">Graduación Promoción 2025</h3>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-3">
+                        Celebración de la investidura de 50 nuevos oficiales de marina mercante listos para servir en aguas internacionales.
+                    </p>
+                    <a href="#" class="text-sm font-bold text-navy-900 flex items-center gap-1 hover:gap-2 transition-all">Leer más <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                </div>
+            </article>
+
+            <article class="bg-white rounded-2xl shadow-lg overflow-hidden border-b-4 border-transparent hover:border-gold-500 transition-all group hover:-translate-y-2">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1516934024742-b461fba47600?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="ISO">
+                    <div class="absolute bottom-0 left-0 bg-navy-900/90 text-white text-xs px-3 py-1 rounded-tr-lg">
+                        Calidad
+                    </div>
+                </div>
+                <div class="p-6">
+                    <span class="text-xs font-bold text-gray-400 mb-2 block">06 Nov, 2025</span>
+                    <h3 class="text-xl font-serif font-bold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors">Recertificación ISO 9001</h3>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-3">
+                        La EMMD aprueba exitosamente la auditoría de seguimiento de calidad, reafirmando su compromiso con la excelencia educativa.
+                    </p>
+                    <a href="#" class="text-sm font-bold text-navy-900 flex items-center gap-1 hover:gap-2 transition-all">Leer más <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                </div>
+            </article>
+
+            <article class="bg-white rounded-2xl shadow-lg overflow-hidden border-b-4 border-transparent hover:border-gold-500 transition-all group hover:-translate-y-2">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1622359623694-5509c8529362?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Constitución">
+                    <div class="absolute bottom-0 left-0 bg-navy-900/90 text-white text-xs px-3 py-1 rounded-tr-lg">
+                        Efemérides
+                    </div>
+                </div>
+                <div class="p-6">
+                    <span class="text-xs font-bold text-gray-400 mb-2 block">06 Nov, 2025</span>
+                    <h3 class="text-xl font-serif font-bold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors">180 Aniversario Constitución</h3>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-3">
+                        Acto solemne en conmemoración de la promulgación de la primera Carta Magna de la República Dominicana.
+                    </p>
+                    <a href="#" class="text-sm font-bold text-navy-900 flex items-center gap-1 hover:gap-2 transition-all">Leer más <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                </div>
+            </article>
+
+            <article class="bg-white rounded-2xl shadow-lg overflow-hidden border-b-4 border-transparent hover:border-gold-500 transition-all group hover:-translate-y-2">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1505672675380-ea1fa667535d?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Simulador">
+                    <div class="absolute bottom-0 left-0 bg-navy-900/90 text-white text-xs px-3 py-1 rounded-tr-lg">
+                        Tecnología
+                    </div>
+                </div>
+                <div class="p-6">
+                    <span class="text-xs font-bold text-gray-400 mb-2 block">28 Oct, 2025</span>
+                    <h3 class="text-xl font-serif font-bold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors">Nuevos Simuladores de Puente</h3>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-3">
+                        Adquisición de tecnología de última generación para las prácticas de maniobra y navegación electrónica.
+                    </p>
+                    <a href="#" class="text-sm font-bold text-navy-900 flex items-center gap-1 hover:gap-2 transition-all">Leer más <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                </div>
+            </article>
+
+            <article class="bg-white rounded-2xl shadow-lg overflow-hidden border-b-4 border-transparent hover:border-gold-500 transition-all group hover:-translate-y-2">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1605218427368-35b86d11f67f?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Conferencia">
+                    <div class="absolute bottom-0 left-0 bg-navy-900/90 text-white text-xs px-3 py-1 rounded-tr-lg">
+                        Académico
+                    </div>
+                </div>
+                <div class="p-6">
+                    <span class="text-xs font-bold text-gray-400 mb-2 block">15 Oct, 2025</span>
+                    <h3 class="text-xl font-serif font-bold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors">Conferencia sobre MARPOL</h3>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-3">
+                        Charla magistral sobre las nuevas regulaciones ambientales internacionales para la prevención de la contaminación marina.
+                    </p>
+                    <a href="#" class="text-sm font-bold text-navy-900 flex items-center gap-1 hover:gap-2 transition-all">Leer más <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                </div>
+            </article>
+
+            <article class="bg-white rounded-2xl shadow-lg overflow-hidden border-b-4 border-transparent hover:border-gold-500 transition-all group hover:-translate-y-2">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1544642899-f0d6e5f6ed6f?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Admisiones">
+                    <div class="absolute bottom-0 left-0 bg-navy-900/90 text-white text-xs px-3 py-1 rounded-tr-lg">
+                        Admisiones
+                    </div>
+                </div>
+                <div class="p-6">
+                    <span class="text-xs font-bold text-gray-400 mb-2 block">01 Oct, 2025</span>
+                    <h3 class="text-xl font-serif font-bold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors">Apertura Convocatoria 2026</h3>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-3">
+                        Iniciamos el proceso de recepción de documentos para los nuevos aspirantes a Cadetes Náuticos.
+                    </p>
+                    <a href="#" class="text-sm font-bold text-navy-900 flex items-center gap-1 hover:gap-2 transition-all">Leer más <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="flex justify-center mt-16 gap-2">
+            <button class="w-10 h-10 rounded-full bg-navy-900 text-white flex items-center justify-center hover:bg-gold-500 transition-colors"><ion-icon name="chevron-back"></ion-icon></button>
+            <button class="w-10 h-10 rounded-full bg-gold-500 text-navy-900 font-bold flex items-center justify-center">1</button>
+            <button class="w-10 h-10 rounded-full bg-white text-gray-600 font-bold flex items-center justify-center hover:bg-gray-100 transition-colors">2</button>
+            <button class="w-10 h-10 rounded-full bg-white text-gray-600 font-bold flex items-center justify-center hover:bg-gray-100 transition-colors">3</button>
+            <button class="w-10 h-10 rounded-full bg-navy-900 text-white flex items-center justify-center hover:bg-gold-500 transition-colors"><ion-icon name="chevron-forward"></ion-icon></button>
+        </div>
+
+    </section>
+</main>
+
+<footer class="bg-navy-950 text-white pt-16 pb-8 border-t border-navy-900 mt-auto">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-3 mb-6">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_the_Dominican_Republic.svg/1200px-Coat_of_arms_of_the_Dominican_Republic.svg.png" class="h-16 brightness-0 invert opacity-80">
+                <div>
+                    <h4 class="font-serif text-xl font-bold text-gold-500">EMMD</h4>
+                    <p class="text-xs text-gray-400 uppercase tracking-wider">Escuela de Marina Mercante Dominicana</p>
+                </div>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed max-w-md">
+                Centro modelo de formación náutica fundamentado en los estándares de la OMI. Certificados bajo la norma ISO 9001:2015 e ISO 21001:2018.
+            </p>
+        </div>
+        
+        <div>
+            <h5 class="font-bold text-gold-500 mb-4 uppercase text-sm tracking-wider">Accesos Rápidos</h5>
+            <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:text-white transition-colors">Aula Virtual</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Solicitud de Récord</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Verificación de Títulos</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Calendario Académico</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h5 class="font-bold text-gold-500 mb-4 uppercase text-sm tracking-wider">Contacto</h5>
+            <ul class="space-y-3 text-sm text-gray-400">
+                <li class="flex items-start gap-2"><ion-icon name="location" class="mt-1 text-gold-600"></ion-icon> Base Naval 27 de Febrero, Villa Duarte, SDE.</li>
+                <li class="flex items-center gap-2"><ion-icon name="call" class="text-gold-600"></ion-icon> (829) 760-8147</li>
+                <li class="flex items-center gap-2"><ion-icon name="mail" class="text-gold-600"></ion-icon> emmd@academianaval.edu.do</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container mx-auto px-4 border-t border-navy-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+        <p>© 2025 Escuela de Marina Mercante ARD. Todos los derechos reservados.</p>
+        <div class="flex gap-4 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white">Política de Privacidad</a>
+            <a href="#" class="hover:text-white">Términos de Uso</a>
+        </div>
+    </div>
+</footer>
+
+<div class="fixed top-1/2 right-0 -translate-y-1/2 z-50 flex flex-col gap-2 items-end">
+    <a href="#" class="group flex items-center justify-end w-12 h-12 bg-navy-900 text-white rounded-l-lg hover:bg-pink-600 hover:w-36 transition-all duration-300 shadow-lg overflow-hidden relative">
+        <span class="absolute left-4 opacity-0 group-hover:opacity-100 transition-opacity font-bold whitespace-nowrap text-xs">Instagram</span>
+        <div class="w-12 h-12 flex items-center justify-center absolute right-0 min-w-[3rem]">
+            <ion-icon name="logo-instagram" class="text-xl"></ion-icon>
+        </div>
+    </a>
+    <a href="#" class="group flex items-center justify-end w-12 h-12 bg-navy-900 text-white rounded-l-lg hover:bg-gold-600 hover:w-36 transition-all duration-300 shadow-lg overflow-hidden relative">
+        <span class="absolute left-4 opacity-0 group-hover:opacity-100 transition-opacity font-bold whitespace-nowrap text-xs">Llamar Ahora</span>
+        <div class="w-12 h-12 flex items-center justify-center absolute right-0 min-w-[3rem]">
+            <ion-icon name="call" class="text-xl"></ion-icon>
+        </div>
+    </a>
+</div>
+
+<script>
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+</script>
+
+</body>
+</html>
