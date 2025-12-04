@@ -115,7 +115,17 @@
                     </ul>
                 </li>
 
-                <li><a href="/articulos.html" class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Noticias</a></li>
+                <li class="group relative">
+                    <a href="/articulos.html" class="flex items-center gap-1 text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">
+                        Noticias <ion-icon name="chevron-down-outline" class="text-xs opacity-70"></ion-icon>
+                    </a>
+                    <ul class="absolute left-0 top-full bg-navy-900 w-48 shadow-xl hidden group-hover:block z-50 border-t-2 border-gold-500">
+                         <li><a href="#" class="block text-white px-6 py-3 hover:bg-navy-800 hover:text-gold-500 transition-colors text-sm border-b border-navy-800">Efemerides</a></li>
+                            <li><a href="#" class="block text-white px-6 py-3 hover:bg-navy-800 hover:text-gold-500 transition-colors text-sm">Capsulas informativas</a></li>
+                    </ul>
+                </li>
+
+
                 <li><a href="#" class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Contacto</a></li>
             </ul>
         </div>
