@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Búsqueda - Escuela de Marina Mercante ARD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"DM Serif Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#1e3a8a',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        gold: {
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="bg-navy-900 text-white text-xs py-2 hidden md:block">
+            <div class="container mx-auto px-4 flex justify-between items-center">
+                <div class="flex gap-4">
+                    <span class="flex items-center gap-1"><ion-icon name="call"></ion-icon> (829) 760-8147</span>
+                    <span class="flex items-center gap-1"><ion-icon name="mail"></ion-icon>
+                        emmd@academianaval.edu.do</span>
+                </div>
+                <div class="flex gap-4 uppercase tracking-widest font-bold text-[10px]">
+                    <a href="#" class="hover:text-gold-500">Intranet</a>
+                    <a href="#" class="hover:text-gold-500">Mapa del Sitio</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center md:hidden">
+                <div class="flex items-center gap-2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRONWEaZA2qKrYswWs_cfF5NftEEFl_UUHRcg&s"
+                        alt="Escudo RD" class="h-10 w-auto">
+                    <div>
+                        <h1 class="font-serif text-navy-900 font-bold leading-none">Escuela de Marina Mercante
+                            Dominicana</h1>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-wide">República Dominicana</p>
+                    </div>
+                </div>
+                <button id="mobile-menu-button" class="text-navy-900 text-3xl focus:outline-none">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+            </div>
+
+            <div class="hidden md:flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRONWEaZA2qKrYswWs_cfF5NftEEFl_UUHRcg&s"
+                        alt="Escudo RD" class="h-12 w-auto">
+                    <div class="h-10 w-px bg-gray-300"></div>
+                    <div class="flex flex-col">
+                        <h1 class="text-3xl font-serif font-bold text-navy-900 tracking-tight">Escuela de Marina
+                            Mercante Dominicana</h1>
+                        <p class="text-xs text-gray-500 font-bold uppercase tracking-[0.2em] text-justify">Armada
+                            República Dominicana</p>
+                    </div>
+                </div>
+
+                <div
+                    class="flex items-center bg-gray-100 rounded-full px-4 py-2 border border-gray-200 focus-within:border-navy-900 focus-within:ring-1 focus-within:ring-navy-900 transition-all">
+                    <ion-icon name="search-outline" class="text-gray-400 mr-2"></ion-icon>
+                    <input type="text" value="Simulador"
+                        class="bg-transparent text-sm focus:outline-none text-navy-900 placeholder-gray-500 w-48">
+                </div>
+            </div>
+        </div>
+
+        <nav class="hidden md:block bg-navy-900 border-t-4 border-gold-500">
+            <div class="container mx-auto">
+                <ul class="flex justify-center">
+                    <li><a href="index.html"
+                            class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Inicio</a>
+                    </li>
+
+                    <li class="group relative">
+                        <a href="#"
+                            class="flex items-center gap-1 text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">
+                            La escuela <ion-icon name="chevron-down-outline" class="text-xs opacity-70"></ion-icon>
+                        </a>
+                        <ul
+                            class="absolute left-0 top-full bg-navy-900 w-48 shadow-xl hidden group-hover:block z-50 border-t-2 border-gold-500">
+                            <li><a href="#"
+                                    class="block text-white px-6 py-3 hover:bg-navy-800 hover:text-gold-500 transition-colors text-sm border-b border-navy-800">Sobre
+                                    nosotros</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="group relative">
+                        <a href="#"
+                            class="flex items-center gap-1 text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">
+                            Oferta Académica <ion-icon name="chevron-down-outline"
+                                class="text-xs opacity-70"></ion-icon>
+                        </a>
+                        <ul
+                            class="absolute left-0 top-full bg-navy-900 w-56 shadow-xl hidden group-hover:block z-50 border-t-2 border-gold-500">
+                            <li><a href="#"
+                                    class="block text-white px-6 py-3 hover:bg-navy-800 hover:text-gold-500 transition-colors text-sm border-b border-navy-800">Cursos
+                                    Básicos</a></li>
+                            <li><a href="#"
+                                    class="block text-white px-6 py-3 hover:bg-navy-800 hover:text-gold-500 transition-colors text-sm border-b border-navy-800">Cursos
+                                    Avanzados</a></li>
+                            <li><a href="#"
+                                    class="block text-white px-6 py-3 hover:bg-navy-800 hover:text-gold-500 transition-colors text-sm border-b border-navy-800">Cursos
+                                    Especiales</a></li>
+                            <li><a href="#"
+                                    class="block text-white px-6 py-3 hover:bg-navy-800 hover:text-gold-500 transition-colors text-sm">Cursos
+                                    Náuticos</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="noticias.html"
+                            class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Noticias</a>
+                    </li>
+                    <li><a href="#"
+                            class="block text-white font-semibold px-6 py-4 hover:bg-navy-800 transition-colors border-b-2 border-transparent hover:border-gold-500">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <nav id="mobile-menu"
+            class="hidden md:hidden bg-navy-900 text-white border-t-4 border-gold-500 absolute w-full z-50 shadow-xl">
+            <ul class="flex flex-col py-4 px-6 space-y-4 font-semibold">
+                <li><a href="index.html" class="block hover:text-gold-500">Inicio</a></li>
+
+                <li>
+                    <button id="btn-mobile-escuela"
+                        class="flex items-center justify-between w-full hover:text-gold-500 focus:outline-none group">
+                        <span>La Escuela</span>
+                        <ion-icon name="chevron-down-outline" class="group-hover:text-gold-500"></ion-icon>
+                    </button>
+                    <ul id="submenu-mobile-escuela"
+                        class="hidden pl-4 mt-2 space-y-2 text-sm text-gray-300 border-l border-gray-700 ml-1 transition-all duration-300">
+                        <li><a href="#" class="block hover:text-gold-500 py-1">Sobre nosotros</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <button id="btn-mobile-oferta"
+                        class="flex items-center justify-between w-full hover:text-gold-500 focus:outline-none group">
+                        <span>Oferta Académica</span>
+                        <ion-icon name="chevron-down-outline" class="group-hover:text-gold-500"></ion-icon>
+                    </button>
+                    <ul id="submenu-mobile-oferta"
+                        class="hidden pl-4 mt-2 space-y-2 text-sm text-gray-300 border-l border-gray-700 ml-1 transition-all duration-300">
+                        <li><a href="#" class="block hover:text-gold-500 py-1">Cursos Básicos</a></li>
+                        <li><a href="#" class="block hover:text-gold-500 py-1">Cursos Avanzados</a></li>
+                        <li><a href="#" class="block hover:text-gold-500 py-1">Cursos Especiales</a></li>
+                        <li><a href="#" class="block hover:text-gold-500 py-1">Cursos Náuticos</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="noticias.html" class="block hover:text-gold-500">Noticias</a></li>
+                <li><a href="#"
+                        class="block bg-gold-600 text-navy-900 text-center py-2 rounded font-bold hover:bg-gold-500 transition-colors">Inscripción</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow bg-gray-50">
+
+        <div class="bg-navy-900 text-white py-12 relative overflow-hidden">
+            <div class="absolute inset-0 bg-black/20 z-0"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <h1 class="text-3xl font-serif font-bold mb-6">Resultados de búsqueda</h1>
+
+                <div class="relative max-w-3xl">
+                    <input type="text" value="Simulador"
+                        class="w-full h-14 pl-14 pr-6 rounded-lg text-navy-900 font-medium focus:outline-none focus:ring-4 focus:ring-gold-500/50 shadow-xl"
+                        placeholder="Escribe tu búsqueda aquí...">
+                    <ion-icon name="search"
+                        class="absolute left-5 top-1/2 -translate-y-1/2 text-2xl text-gray-400"></ion-icon>
+                    <button
+                        class="absolute right-2 top-2 bottom-2 bg-gold-500 text-navy-900 px-6 rounded font-bold hover:bg-gold-600 transition-colors">Buscar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-12">
+            <div class="flex flex-col lg:flex-row gap-8">
+
+                <aside class="lg:w-1/4 shrink-0">
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 sticky top-24">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-bold text-navy-900">Filtrar por</h3>
+                            <a href="#" class="text-xs text-gold-600 hover:underline">Limpiar</a>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="radio" name="filter" checked class="accent-gold-500 w-4 h-4">
+                                <span class="text-sm text-gray-700 font-medium group-hover:text-navy-900">Todos los
+                                    resultados</span>
+                                <span
+                                    class="ml-auto text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">12</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="radio" name="filter" class="accent-gold-500 w-4 h-4">
+                                <span class="text-sm text-gray-700 group-hover:text-navy-900">Cursos y Programas</span>
+                                <span
+                                    class="ml-auto text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">4</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="radio" name="filter" class="accent-gold-500 w-4 h-4">
+                                <span class="text-sm text-gray-700 group-hover:text-navy-900">Noticias</span>
+                                <span
+                                    class="ml-auto text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">5</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="radio" name="filter" class="accent-gold-500 w-4 h-4">
+                                <span class="text-sm text-gray-700 group-hover:text-navy-900">Documentos PDF</span>
+                                <span
+                                    class="ml-auto text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">3</span>
+                            </label>
+                        </div>
+
+                        <hr class="my-6 border-gray-100">
+
+                        <h3 class="font-bold text-navy-900 mb-4 text-sm">Ordenar por</h3>
+                        <select
+                            class="w-full bg-gray-50 border border-gray-200 text-sm rounded-lg p-2.5 focus:ring-gold-500 focus:border-gold-500 outline-none">
+                            <option>Relevancia</option>
+                            <option>Más recientes</option>
+                            <option>Más antiguos</option>
+                        </select>
+                    </div>
+                </aside>
+
+                <div class="lg:w-3/4">
+                    <p class="text-sm text-gray-500 mb-6">Mostrando <strong>1-6</strong> de <strong>12</strong>
+                        resultados para <span class="text-navy-900 font-bold">"Simulador"</span></p>
+
+                    <div class="space-y-6">
+
+                        <article
+                            class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-gold-500 transition-all flex flex-col md:flex-row gap-6 group">
+                            <div class="w-full md:w-48 h-32 rounded-lg overflow-hidden shrink-0">
+                                <img src="https://images.unsplash.com/photo-1505672675380-ea1fa667535d?q=80&w=400&auto=format&fit=crop"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-[10px] uppercase font-bold text-white bg-navy-900 px-2 py-0.5 rounded">Curso
+                                        Especial</span>
+                                    <span class="text-xs text-gray-400">Oferta Académica</span>
+                                </div>
+                                <h2
+                                    class="text-xl font-serif font-bold text-navy-900 mb-2 group-hover:text-gold-600 transition-colors">
+                                    <a href="#">Uso de Simulador de Puente (Full Mission)</a>
+                                </h2>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-3">
+                                    Entrenamiento avanzado en maniobras utilizando nuestro <span
+                                        class="bg-yellow-100 font-bold px-1">simulador</span> de última generación.
+                                    Cumple con las regulaciones OMI 1.22.
+                                </p>
+                                <a href="#"
+                                    class="text-sm font-bold text-gold-600 hover:underline inline-flex items-center gap-1">Ver
+                                    detalles del curso <ion-icon name="arrow-forward"></ion-icon></a>
+                            </div>
+                        </article>
+
+                        <article
+                            class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-gold-500 transition-all flex flex-col md:flex-row gap-6 group">
+                            <div class="w-full md:w-48 h-32 rounded-lg overflow-hidden shrink-0 relative">
+                                <div
+                                    class="absolute inset-0 bg-navy-900/10 group-hover:bg-transparent transition-colors">
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=400&auto=format&fit=crop"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-[10px] uppercase font-bold text-gold-600 border border-gold-600 px-2 py-0.5 rounded">Noticias</span>
+                                    <span class="text-xs text-gray-400">28 Oct, 2025</span>
+                                </div>
+                                <h2
+                                    class="text-xl font-serif font-bold text-navy-900 mb-2 group-hover:text-gold-600 transition-colors">
+                                    <a href="#">Adquisición de Nuevos Simuladores de Navegación</a>
+                                </h2>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-3">
+                                    La Escuela de Marina Mercante inaugura la nueva sala de <span
+                                        class="bg-yellow-100 font-bold px-1">simulación</span> electrónica, permitiendo
+                                    prácticas de radar ARPA y ECDIS.
+                                </p>
+                                <a href="#"
+                                    class="text-sm font-bold text-navy-900 hover:text-gold-600 inline-flex items-center gap-1">Leer
+                                    noticia <ion-icon name="arrow-forward"></ion-icon></a>
+                            </div>
+                        </article>
+
+                        <article
+                            class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-gold-500 transition-all flex gap-4 group">
+                            <div
+                                class="shrink-0 flex items-center justify-center w-16 h-16 bg-red-50 text-red-500 rounded-lg">
+                                <ion-icon name="document-text-outline" class="text-3xl"></ion-icon>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span
+                                        class="text-[10px] uppercase font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded">PDF</span>
+                                </div>
+                                <h2
+                                    class="text-lg font-serif font-bold text-navy-900 mb-1 group-hover:text-gold-600 transition-colors">
+                                    <a href="#">Manual de Usuario del Simulador Transas v2.pdf</a>
+                                </h2>
+                                <p class="text-gray-500 text-xs mb-2">Tamaño: 2.4 MB • Publicado: 15 Sep 2024</p>
+                                <a href="#"
+                                    class="text-sm font-bold text-navy-900 hover:underline inline-flex items-center gap-1"><ion-icon
+                                        name="cloud-download-outline"></ion-icon> Descargar archivo</a>
+                            </div>
+                        </article>
+
+                        <article
+                            class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-gold-500 transition-all flex flex-col md:flex-row gap-6 group">
+                            <div class="w-full md:w-48 h-32 rounded-lg overflow-hidden shrink-0">
+                                <img src="https://images.unsplash.com/photo-1544642899-f0d6e5f6ed6f?q=80&w=400&auto=format&fit=crop"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-[10px] uppercase font-bold text-white bg-navy-900 px-2 py-0.5 rounded">Curso
+                                        Básico</span>
+                                    <span class="text-xs text-gray-400">Oferta Académica</span>
+                                </div>
+                                <h2
+                                    class="text-xl font-serif font-bold text-navy-900 mb-2 group-hover:text-gold-600 transition-colors">
+                                    <a href="#">Radar de Punteo Automático (ARPA)</a>
+                                </h2>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-3">
+                                    Curso obligatorio para oficiales de cubierta. Incluye 20 horas de práctica en <span
+                                        class="bg-yellow-100 font-bold px-1">simulador</span> y evaluación práctica.
+                                </p>
+                                <a href="#"
+                                    class="text-sm font-bold text-gold-600 hover:underline inline-flex items-center gap-1">Ver
+                                    detalles del curso <ion-icon name="arrow-forward"></ion-icon></a>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <div class="flex justify-center mt-12 gap-2">
+                        <button
+                            class="w-10 h-10 rounded-lg border border-gray-200 text-gray-500 hover:bg-navy-900 hover:text-white transition-colors flex items-center justify-center"><ion-icon
+                                name="chevron-back"></ion-icon></button>
+                        <button
+                            class="w-10 h-10 rounded-lg bg-navy-900 text-white font-bold flex items-center justify-center shadow-lg">1</button>
+                        <button
+                            class="w-10 h-10 rounded-lg border border-gray-200 text-gray-600 font-bold flex items-center justify-center hover:bg-gray-50 hover:border-gold-500 transition-colors">2</button>
+                        <button
+                            class="w-10 h-10 rounded-lg border border-gray-200 text-gray-500 hover:bg-navy-900 hover:text-white transition-colors flex items-center justify-center"><ion-icon
+                                name="chevron-forward"></ion-icon></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-navy-950 text-white pt-16 pb-8 border-t border-navy-900 mt-auto">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-3 mb-6">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_the_Dominican_Republic.svg/1200px-Coat_of_arms_of_the_Dominican_Republic.svg.png"
+                        class="h-16 brightness-0 invert opacity-80">
+                    <div>
+                        <h4 class="font-serif text-xl font-bold text-gold-500">EMMD</h4>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider">Escuela de Marina Mercante Dominicana
+                        </p>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed max-w-md">
+                    Centro modelo de formación náutica fundamentado en los estándares de la OMI. Certificados bajo la
+                    norma ISO 9001:2015 e ISO 21001:2018.
+                </p>
+            </div>
+
+            <div>
+                <h5 class="font-bold text-gold-500 mb-4 uppercase text-sm tracking-wider">Accesos Rápidos</h5>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Aula Virtual</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Solicitud de Récord</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Verificación de Títulos</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Calendario Académico</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="font-bold text-gold-500 mb-4 uppercase text-sm tracking-wider">Contacto</h5>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li class="flex items-start gap-2"><ion-icon name="location" class="mt-1 text-gold-600"></ion-icon>
+                        Base Naval 27 de Febrero, Villa Duarte, SDE.</li>
+                    <li class="flex items-center gap-2"><ion-icon name="call" class="text-gold-600"></ion-icon> (829)
+                        760-8147</li>
+                    <li class="flex items-center gap-2"><ion-icon name="mail" class="text-gold-600"></ion-icon>
+                        emmd@academianaval.edu.do</li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="container mx-auto px-4 border-t border-navy-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+            <p>© 2025 Escuela de Marina Mercante ARD. Todos los derechos reservados.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white">Política de Privacidad</a>
+                <a href="#" class="hover:text-white">Términos de Uso</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Menú Principal (Hamburguesa)
+            const menuBtn = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // 2. Submenús (Dropdowns)
+            function setupSubmenu(btnId, submenuId) {
+                const btn = document.getElementById(btnId);
+                const submenu = document.getElementById(submenuId);
+
+                if (btn && submenu) {
+                    const icon = btn.querySelector('ion-icon');
+
+                    btn.addEventListener('click', () => {
+                        submenu.classList.toggle('hidden');
+                        if (submenu.classList.contains('hidden')) {
+                            icon.setAttribute('name', 'chevron-down-outline');
+                        } else {
+                            icon.setAttribute('name', 'chevron-up-outline');
+                        }
+                    });
+                }
+            }
+
+            setupSubmenu('btn-mobile-escuela', 'submenu-mobile-escuela');
+            setupSubmenu('btn-mobile-oferta', 'submenu-mobile-oferta');
+        });
+    </script>
+
+</body>
+
+</html>
